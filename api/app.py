@@ -436,5 +436,4 @@ def delete_job(job_id):
 
 
 if __name__ == "__main__":
-    # app.run(host=FLASK_HOST, port=FLASK_PORT)
     socketio.run(app, host=FLASK_HOST, port=FLASK_PORT)
