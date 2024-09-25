@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+
+  web:
+    image: katecourt123/sisc:latest
+    container_name: spineq-api
+    ports:
+      - 80:5000
+    depends_on:
+      - redis
+      - worker
+    command: "gunicorn --bind 0.0.0.0:5000 --worker-class eventlet -w 1 app:app"
+
+  worker:
+    image: katecourt123/sisc:latest
+    container_name: spineq-worker
+    depends_on:
+      - redis
+    command: python worker.py
+
+  redis:
+    image: redis
+    container_name: redis

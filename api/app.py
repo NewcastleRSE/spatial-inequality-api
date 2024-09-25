@@ -2,7 +2,8 @@
 optimisation backend.
 """
 
-import pandas as pd
+
+
 import rq
 from config import FLASK_HOST, FLASK_PORT, REDIS_HOST, REDIS_PORT
 from flask import Flask, jsonify, request
@@ -10,7 +11,7 @@ from flask_cors import CORS
 from flask_socketio import SocketIO, emit
 from rq.job import Job
 from worker import conn, queue
-
+import pandas as pd
 from spineq.optimise import calc_coverage, get_optimisation_inputs
 from spineq.utils import make_age_range, make_job_dict
 

@@ -466,3 +466,4 @@ def calc_coverage(lad20cd, sensors, oa_weight=None, theta=500):
         for oa, cov in zip(centroids.index.values, oa_coverage)
     ]
     return {"total_coverage": overall_coverage, "oa_coverage": oa_coverage}
+

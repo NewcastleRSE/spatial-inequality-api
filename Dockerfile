@@ -8,8 +8,8 @@ RUN apt-get update && \
     rm -rf /var/cache/apt/lists
 
 # Port setup
-ENV PORT 5000
-EXPOSE $PORT
+
+EXPOSE 50
 
 # Copy files
 COPY api /app/api

@@ -109,3 +109,15 @@ It should return a JSON with this structure:
 ### Dependencies
 
 The dockerised version of the code used for the API uses only `pip` and the packages in `requirements.txt`. This doesn't include some plotting and optimisation libraries included in the `conda` environment.
+
+### Deployment
+
+Run `arch`. If using arm64, build image with platform tag. 
+
+1. Build the image locally:
+`docker  build . -t katecourt123/sisc:latest` or `docker  build --platform linux/amd64 . -t katecourt123/sisc:latest`
+
+2. Push to Docker hub:
+`docker push katecourt123/sisc:latest`
+
+3. Restart [web service](https://portal.azure.com/#@newcastle.onmicrosoft.com/resource/subscriptions/e7cbfebb-f482-46c4-a90b-126855b03325/resourceGroups/sisc/providers/Microsoft.Web/sites/sisc/appServices) on Azure
