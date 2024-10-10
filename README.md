@@ -112,6 +112,34 @@ The dockerised version of the code used for the API uses only `pip` and the pack
 
 ### Deployment
 
+Create a web app on Azure, selecting the 'container' option. In the deplyoment center, add this dompose file:
+```
+version: '3'
+
+services:
+
+  web:
+    image: katecourt123/sisc:latest
+    container_name: spineq-api
+    ports:
+      - "5000:5000"
+    depends_on:
+      - redis
+      - worker
+    command: "gunicorn --bind 0.0.0.0:5000 --worker-class eventlet -w 1 app:app"
+
+  worker:
+    image: katecourt123/sisc:latest
+    container_name: spineq-worker
+    depends_on:
+      - redis
+    command: python worker.py
+
+  redis:
+    image: redis
+    container_name: redis
+    ```
+
 Run `arch`. If using arm64, build image with platform tag. 
 
 1. Build the image locally:
